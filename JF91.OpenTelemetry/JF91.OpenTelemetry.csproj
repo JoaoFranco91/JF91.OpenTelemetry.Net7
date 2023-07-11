@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <Title>JF91.OpenTelemetry</Title>
+        <Description>Integrate OpenTelemetry into your ASP.NET Web API using appsettings.json</Description>
+        <Copyright>João Franco</Copyright>
+        <PackageTags>opentelemetry,metrics,traces,logs</PackageTags>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageLicenseUrl>https://opensource.org/license/bsd-3-clause/</PackageLicenseUrl>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.5.1" />
+      <PackageReference Include="OpenTelemetry.Exporter.InfluxDB" Version="1.0.0-alpha.2" />
+      <PackageReference Include="OpenTelemetry.Exporter.Jaeger" Version="1.5.1" />
+      <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.5.1" />
+      <PackageReference Include="OpenTelemetry.Exporter.Prometheus.AspNetCore" Version="1.5.0-rc.1" />
+      <PackageReference Include="OpenTelemetry.Exporter.Zipkin" Version="1.5.1" />
+      <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.5.1" />
+      <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.5.0-beta.1" />
+      <PackageReference Include="OpenTelemetry.Instrumentation.EntityFrameworkCore" Version="1.0.0-beta.7" />
+      <PackageReference Include="OpenTelemetry.Instrumentation.Hangfire" Version="1.5.0-beta.1" />
+      <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.5.0-beta.1" />
+      <PackageReference Include="OpenTelemetry.Instrumentation.Runtime" Version="1.5.0" />
+      <PackageReference Include="OpenTelemetry.Instrumentation.SqlClient" Version="1.5.0-beta.1" />
+      <PackageReference Include="OpenTelemetry.Instrumentation.StackExchangeRedis" Version="1.0.0-rc9.10" />
+    </ItemGroup>
+
+    <PropertyGroup>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
+
+</Project>

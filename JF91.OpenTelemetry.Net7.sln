@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JF91.OpenTelemetry.Net7", "JF91.OpenTelemetry.Net7\JF91.OpenTelemetry.Net7.csproj", "{053480BC-CA4E-4016-9F0C-A36BF99537D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JF91.OpenTelemetry", "JF91.OpenTelemetry\JF91.OpenTelemetry.csproj", "{6F5D05F4-5C8D-4CB2-8F98-B04B40670813}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{053480BC-CA4E-4016-9F0C-A36BF99537D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{053480BC-CA4E-4016-9F0C-A36BF99537D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{053480BC-CA4E-4016-9F0C-A36BF99537D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{053480BC-CA4E-4016-9F0C-A36BF99537D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F5D05F4-5C8D-4CB2-8F98-B04B40670813}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F5D05F4-5C8D-4CB2-8F98-B04B40670813}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F5D05F4-5C8D-4CB2-8F98-B04B40670813}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F5D05F4-5C8D-4CB2-8F98-B04B40670813}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
