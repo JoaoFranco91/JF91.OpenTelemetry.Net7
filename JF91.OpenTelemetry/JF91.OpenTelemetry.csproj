@@ -12,7 +12,10 @@
         <PackageLicenseUrl>https://opensource.org/license/bsd-3-clause/</PackageLicenseUrl>
         <PackageProjectUrl>https://github.com/JoaoFranco91/JF91.OpenTelemetry.Net7</PackageProjectUrl>
         <RepositoryUrl>https://github.com/JoaoFranco91/JF91.OpenTelemetry.Net7</RepositoryUrl>
-        <Version>1.0.1</Version>
+        <Version>1.2</Version>
+        <PackageReleaseNotes>Version 1.2:
+# Added OTLP Exporter Colletion
+# appsettings.json extended with OTLP Exporter Array</PackageReleaseNotes>
     </PropertyGroup>
 
     <ItemGroup>
