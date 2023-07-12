@@ -108,6 +108,26 @@ public static class OpenTelemetryExtensions
                                 }
                             );
                         }
+
+                        if (otelSettings.Exporters.Otlp.Any())
+                        {
+                            foreach (var otlp in otelSettings.Exporters.Otlp)
+                            {
+                                if (otlp.Enabled)
+                                {
+                                    builder.AddOtlpExporter
+                                    (
+                                        options =>
+                                        {
+                                            options.Endpoint = new Uri(otlp.Url);
+                                            options.Protocol = otlp.Protocol.ToLower() == OtlpProtocols.Http
+                                                ? OtlpExportProtocol.HttpProtobuf
+                                                : OtlpExportProtocol.Grpc;
+                                        }
+                                    );
+                                }
+                            }
+                        }
                     }
                 }
             )
@@ -158,6 +178,26 @@ public static class OpenTelemetryExtensions
                                         : OtlpExportProtocol.Grpc;
                                 }
                             );
+                        }
+                        
+                        if (otelSettings.Exporters.Otlp.Any())
+                        {
+                            foreach (var otlp in otelSettings.Exporters.Otlp)
+                            {
+                                if (otlp.Enabled)
+                                {
+                                    builder.AddOtlpExporter
+                                    (
+                                        options =>
+                                        {
+                                            options.Endpoint = new Uri(otlp.Url);
+                                            options.Protocol = otlp.Protocol.ToLower() == OtlpProtocols.Http
+                                                ? OtlpExportProtocol.HttpProtobuf
+                                                : OtlpExportProtocol.Grpc;
+                                        }
+                                    );
+                                }
+                            }
                         }
                     }
                 }

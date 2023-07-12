@@ -50,7 +50,19 @@ app.AddOpenTelemetryExtensions();
             "Enabled": false,
             "Url": "http://localhost:8086",
             "Protocol": "http"
+        },
+        "Otlp": [
+        {
+          "Enabled": true,
+          "Url": "http://localhost:4317",
+          "Protocol": "grpc"
+        },
+        {
+          "Enabled": false,
+          "Url": "http://localhost:4317",
+          "Protocol": "http"
         }
+      ]
     },
     "Instrumentation": {
         "Http": true,

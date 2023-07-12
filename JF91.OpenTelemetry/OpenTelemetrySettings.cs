@@ -24,6 +24,7 @@ public class Exporters
     public Zipkin Zipkin { get; set; }
     public Prometheus Prometheus { get; set; }
     public InfluxDB InfluxDB { get; set; }
+    public IList<Otlp> Otlp { get; set; }
 }
 
 public class ExportersProperties
@@ -48,12 +49,11 @@ public static class OtlpProtocols
 
 public class Console : ExportersProperties { }
 public class Jaeger : ExportersProperties { }
-
 public class Zipkin : ExportersProperties { }
-
 public class Prometheus : ExportersProperties
 {
     public string ScrapeEndpointPath { get; set; } = "/metrics";
     public int ScrapeResponseCacheDurationMilliseconds { get; set; } = 300;
 }
 public class InfluxDB : ExportersProperties { }
+public class Otlp : ExportersProperties { }

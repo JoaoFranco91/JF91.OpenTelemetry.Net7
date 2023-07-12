@@ -10,6 +10,9 @@
         <PackageTags>opentelemetry,metrics,traces,logs</PackageTags>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageLicenseUrl>https://opensource.org/license/bsd-3-clause/</PackageLicenseUrl>
+        <PackageProjectUrl>https://github.com/JoaoFranco91/JF91.OpenTelemetry.Net7</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/JoaoFranco91/JF91.OpenTelemetry.Net7</RepositoryUrl>
+        <Version>1.0.1</Version>
     </PropertyGroup>
 
     <ItemGroup>
