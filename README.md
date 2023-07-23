@@ -5,7 +5,7 @@ Use this package to integrate OpenTelemetry into your ASP.NET Web API using ```a
 Follow these steps to get it done:
 #### 1: Install Nuget Package
 ```
-dotnet add package JF91.OpenTelemetry --version 1.0.1
+dotnet add package JF91.OpenTelemetry --version 1.2.0
 ```
 <br>
 
@@ -50,7 +50,19 @@ app.AddOpenTelemetryExtensions();
             "Enabled": false,
             "Url": "http://localhost:8086",
             "Protocol": "http"
+        },
+        "Otlp": [
+        {
+          "Enabled": true,
+          "Url": "http://localhost:4317",
+          "Protocol": "grpc"
+        },
+        {
+          "Enabled": false,
+          "Url": "http://localhost:4317",
+          "Protocol": "http"
         }
+      ]
     },
     "Instrumentation": {
         "Http": true,
