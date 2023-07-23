@@ -1312,7 +1312,7 @@
           }
         }
       },
-      "JF91.OpenTelemetry/1.0.1": {
+      "JF91.OpenTelemetry/1.2.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
@@ -3316,7 +3316,7 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "JF91.OpenTelemetry/1.0.1": {
+    "JF91.OpenTelemetry/1.2.0": {
       "type": "project",
       "path": "../JF91.OpenTelemetry/JF91.OpenTelemetry.csproj",
       "msbuildProject": "../JF91.OpenTelemetry/JF91.OpenTelemetry.csproj"
@@ -3324,7 +3324,7 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "JF91.OpenTelemetry >= 1.0.1",
+      "JF91.OpenTelemetry >= 1.2.0",
       "Microsoft.AspNetCore.OpenApi >= 7.0.3",
       "Swashbuckle.AspNetCore >= 6.4.0"
     ]

@@ -16,7 +16,12 @@ public static class OpenTelemetryExtensions
     public static IServiceCollection AddOpenTelemetryServices
     (
         this IServiceCollection services,
-        IConfiguration config
+        IConfiguration config,
+        Action<Jaeger> jaegerOptions = null,
+        Action<Zipkin> zipkinOptions = null,
+        Action<InfluxDB> influxdbOptions = null,
+        List<Action<Otlp>> otlpOptions = null,
+        Action<Prometheus> prometheusOptions = null
     )
     {
         config.GetSection(nameof(OpenTelemetrySettings)).Bind(otelSettings);
@@ -76,6 +81,11 @@ public static class OpenTelemetryExtensions
                             (
                                 options =>
                                 {
+                                    if (jaegerOptions != null)
+                                    {
+                                        jaegerOptions(otelSettings.Exporters.Jaeger);
+                                    }
+                                    
                                     options.Endpoint= new Uri(otelSettings.Exporters.Jaeger.Endpoint);
                                     options.Protocol = otelSettings.Exporters.Jaeger.Protocol.ToLower() == JaegerProtocols.Http
                                         ? JaegerExportProtocol.HttpBinaryThrift
@@ -90,6 +100,11 @@ public static class OpenTelemetryExtensions
                             (
                                 options =>
                                 {
+                                    if (zipkinOptions != null)
+                                    {
+                                        zipkinOptions(otelSettings.Exporters.Zipkin);
+                                    }
+                                    
                                     options.Endpoint = new Uri(otelSettings.Exporters.Zipkin.Endpoint);
                                 }
                             );
@@ -101,6 +116,11 @@ public static class OpenTelemetryExtensions
                             (
                                 options =>
                                 {
+                                    if (influxdbOptions != null)
+                                    {
+                                        influxdbOptions(otelSettings.Exporters.InfluxDB);
+                                    }
+                                    
                                     options.Endpoint = new Uri(otelSettings.Exporters.InfluxDB.Url);
                                     options.Protocol = otelSettings.Exporters.InfluxDB.Protocol.ToLower() == OtlpProtocols.Http
                                             ? OtlpExportProtocol.HttpProtobuf
@@ -111,8 +131,14 @@ public static class OpenTelemetryExtensions
 
                         if (otelSettings.Exporters.Otlp.Any())
                         {
+                            int otlpIndex = 0;
                             foreach (var otlp in otelSettings.Exporters.Otlp)
                             {
+                                if (otlpOptions.ElementAtOrDefault(otlpIndex) != null)
+                                {
+                                    otlpOptions[otlpIndex](otlp);
+                                }
+                                
                                 if (otlp.Enabled)
                                 {
                                     builder.AddOtlpExporter
@@ -126,6 +152,8 @@ public static class OpenTelemetryExtensions
                                         }
                                     );
                                 }
+
+                                otlpIndex++;
                             }
                         }
                     }
@@ -158,6 +186,11 @@ public static class OpenTelemetryExtensions
                             (
                                 options =>
                                 {
+                                    if (prometheusOptions != null)
+                                    {
+                                        prometheusOptions(otelSettings.Exporters.Prometheus);
+                                    }
+                                    
                                     options.ScrapeEndpointPath = otelSettings.Exporters.Prometheus.ScrapeEndpointPath;
                                     options.ScrapeResponseCacheDurationMilliseconds = otelSettings.Exporters.Prometheus
                                         .ScrapeResponseCacheDurationMilliseconds;
@@ -171,7 +204,11 @@ public static class OpenTelemetryExtensions
                             (
                                 options =>
                                 {
-                                    // Use IConfiguration directly for Otlp exporter endpoint option.
+                                    if (influxdbOptions != null)
+                                    {
+                                        influxdbOptions(otelSettings.Exporters.InfluxDB);
+                                    }
+                                    
                                     options.Endpoint = new Uri(otelSettings.Exporters.InfluxDB.Url);
                                     options.Protocol = otelSettings.Exporters.InfluxDB.Protocol.ToLower() == OtlpProtocols.Http
                                         ? OtlpExportProtocol.HttpProtobuf
@@ -182,8 +219,14 @@ public static class OpenTelemetryExtensions
                         
                         if (otelSettings.Exporters.Otlp.Any())
                         {
+                            int otlpIndex = 0;
                             foreach (var otlp in otelSettings.Exporters.Otlp)
                             {
+                                if (otlpOptions.ElementAtOrDefault(otlpIndex) != null)
+                                {
+                                    otlpOptions[otlpIndex](otlp);
+                                }
+                                
                                 if (otlp.Enabled)
                                 {
                                     builder.AddOtlpExporter

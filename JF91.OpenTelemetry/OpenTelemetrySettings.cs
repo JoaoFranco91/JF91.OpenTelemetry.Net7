@@ -30,9 +30,6 @@ public class Exporters
 public class ExportersProperties
 {
     public bool Enabled { get; set; }
-    public string Endpoint { get; set; }
-    public string Url { get; set; }
-    public string Protocol { get; set; }
 }
 
 public static class JaegerProtocols
@@ -48,12 +45,34 @@ public static class OtlpProtocols
 }
 
 public class Console : ExportersProperties { }
-public class Jaeger : ExportersProperties { }
-public class Zipkin : ExportersProperties { }
+
+public class Jaeger : ExportersProperties
+{
+    public bool Enabled { get; set; }
+    public string Endpoint { get; set; }
+    public string Protocol { get; set; }
+}
+
+public class Zipkin : ExportersProperties
+{
+    public bool Enabled { get; set; }
+    public string Endpoint { get; set; }
+}
+
 public class Prometheus : ExportersProperties
 {
     public string ScrapeEndpointPath { get; set; } = "/metrics";
     public int ScrapeResponseCacheDurationMilliseconds { get; set; } = 300;
 }
-public class InfluxDB : ExportersProperties { }
-public class Otlp : ExportersProperties { }
+
+public class InfluxDB : ExportersProperties
+{
+    public string Url { get; set; }
+    public string Protocol { get; set; }
+}
+
+public class Otlp : ExportersProperties
+{
+    public string Url { get; set; }
+    public string Protocol { get; set; }
+}
