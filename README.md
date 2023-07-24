@@ -5,7 +5,7 @@ Use this package to integrate OpenTelemetry into your ASP.NET Web API using ```a
 Follow these steps to get it done:
 #### 1: Install Nuget Package
 ```
-dotnet add package JF91.OpenTelemetry --version 1.2.0
+dotnet add package JF91.OpenTelemetry
 ```
 <br>
 
@@ -13,6 +13,58 @@ dotnet add package JF91.OpenTelemetry --version 1.2.0
 ```
 builder.Services.AddOpenTelemetryServices(builder.Configuration);
 ```
+
+#### 2.2: Customize settings (Optional):
+###### Custom options are optional which means that you can mix options from appsettings.json with the ones defined below
+```
+builder.Services.AddOpenTelemetryServices
+(
+    builder.Configuration,
+    jaegerOptions =>
+    {
+        jaegerOptions.Enabled = true;
+        jaegerOptions.Endpoint = "http://www.test.com";
+        jaegerOptions.Protocol = JaegerProtocols.Http;
+    },
+    zipkinOptions =>
+    {
+        zipkinOptions.Enabled = true;
+        zipkinOptions.Endpoint = "http://www.test.com";
+    },
+    influxdbOptions =>
+    {
+        influxdbOptions.Enabled = true;
+        influxdbOptions.Url = "http://www.test.com";
+        influxdbOptions.Protocol = JaegerProtocols.Http;
+    },
+    new List<Action<Otlp>>
+    {
+        otlp_one =>
+        {
+            otlp_one.Enabled = true;
+            otlp_one.Url = "http://www.test.com";
+            otlp_one.Protocol = OtlpProtocols.Http;
+        },
+        otlp_two =>
+        {
+            otlp_two.Enabled = true;
+            otlp_two.Url = "http://www.test2.com";
+            otlp_two.Protocol = OtlpProtocols.Grpc;
+        }
+    },
+    prometheusOptions =>
+    {
+        prometheusOptions.Enabled = true;
+        prometheusOptions.ScrapeEndpointPath = "/test";
+        prometheusOptions.ScrapeResponseCacheDurationMilliseconds = 1000;
+    }
+);
+```
+#### IMPORTANT: For a custom options list to OTLP Exporters, you need to have the same ammount of entries in appsettings.json with the same order.
+
+Example 1: 3 OTLP Exporters in appsettings.json and 2 Custom Options will override the first 2 OTLP Exportes in appsettings.json from the first 2 Custom Options.
+
+Example 2: 2 OTLP Exporters in appsettings.json and 3 Custom Options will override the 2 OTLP Exporters in appsettings.json from the first 2 Custom Options.
 
 <br>
 
