@@ -12,8 +12,11 @@
         <PackageLicenseUrl>https://opensource.org/license/bsd-3-clause/</PackageLicenseUrl>
         <PackageProjectUrl>https://github.com/JoaoFranco91/JF91.OpenTelemetry.Net7</PackageProjectUrl>
         <RepositoryUrl>https://github.com/JoaoFranco91/JF91.OpenTelemetry.Net7</RepositoryUrl>
-        <Version>1.2.2</Version>
-        <PackageReleaseNotes>Version 1.2.2:
+        <Version>1.2.3</Version>
+        <PackageReleaseNotes>Version 1.2.3:
+# Fixed non-null exception when not passing an OTLP Options List
+
+Version 1.2.2:
 # Added delegates for each parent settings providing the ability to customize all options for tracing and metrics.
 
 Version 1.2:

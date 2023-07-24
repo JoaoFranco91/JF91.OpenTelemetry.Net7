@@ -2,7 +2,7 @@ using JF91.OpenTelemetry;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddOpenTelemetryServices(builder.Configuration);
+//builder.Services.AddOpenTelemetryServices(builder.Configuration);
 
 builder.Services.AddOpenTelemetryServices
 (

@@ -20,7 +20,7 @@ public static class OpenTelemetryExtensions
         Action<Jaeger> jaegerOptions = null,
         Action<Zipkin> zipkinOptions = null,
         Action<InfluxDB> influxdbOptions = null,
-        List<Action<Otlp>> otlpOptions = null,
+        IList<Action<Otlp>> otlpOptions = null,
         Action<Prometheus> prometheusOptions = null
     )
     {
@@ -134,11 +134,14 @@ public static class OpenTelemetryExtensions
                             int otlpIndex = 0;
                             foreach (var otlp in otelSettings.Exporters.Otlp)
                             {
-                                if (otlpOptions.ElementAtOrDefault(otlpIndex) != null)
+                                if (otlpOptions != null)
                                 {
-                                    otlpOptions[otlpIndex](otlp);
+                                    if (otlpOptions.ElementAtOrDefault(otlpIndex) != null)
+                                    {
+                                        otlpOptions[otlpIndex](otlp);
+                                    }
                                 }
-                                
+
                                 if (otlp.Enabled)
                                 {
                                     builder.AddOtlpExporter
@@ -222,11 +225,14 @@ public static class OpenTelemetryExtensions
                             int otlpIndex = 0;
                             foreach (var otlp in otelSettings.Exporters.Otlp)
                             {
-                                if (otlpOptions.ElementAtOrDefault(otlpIndex) != null)
+                                if (otlpOptions != null)
                                 {
-                                    otlpOptions[otlpIndex](otlp);
+                                    if (otlpOptions.ElementAtOrDefault(otlpIndex) != null)
+                                    {
+                                        otlpOptions[otlpIndex](otlp);
+                                    }
                                 }
-                                
+
                                 if (otlp.Enabled)
                                 {
                                     builder.AddOtlpExporter
