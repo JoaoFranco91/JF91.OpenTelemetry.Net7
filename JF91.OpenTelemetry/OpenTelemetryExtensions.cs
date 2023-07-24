@@ -134,12 +134,9 @@ public static class OpenTelemetryExtensions
                             int otlpIndex = 0;
                             foreach (var otlp in otelSettings.Exporters.Otlp)
                             {
-                                if (otlpOptions != null)
+                                if (otlpOptions?.ElementAtOrDefault(otlpIndex) != null)
                                 {
-                                    if (otlpOptions.ElementAtOrDefault(otlpIndex) != null)
-                                    {
-                                        otlpOptions[otlpIndex](otlp);
-                                    }
+                                    otlpOptions[otlpIndex](otlp);
                                 }
 
                                 if (otlp.Enabled)
@@ -225,12 +222,9 @@ public static class OpenTelemetryExtensions
                             int otlpIndex = 0;
                             foreach (var otlp in otelSettings.Exporters.Otlp)
                             {
-                                if (otlpOptions != null)
+                                if (otlpOptions?.ElementAtOrDefault(otlpIndex) != null)
                                 {
-                                    if (otlpOptions.ElementAtOrDefault(otlpIndex) != null)
-                                    {
-                                        otlpOptions[otlpIndex](otlp);
-                                    }
+                                    otlpOptions[otlpIndex](otlp);
                                 }
 
                                 if (otlp.Enabled)
